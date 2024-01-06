@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Report List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Report List</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>City</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate through the list of reports -->
+        <tr th:each="report : ${reports}">
+            <td th:text="${report.id}"></td>
+            <td th:text="${report.description}"></td>
+            <td th:text="${report.longitude}"></td>
+            <td th:text="${report.latitude}"></td>
+            <td th:text="${report.city.name}"></td>
+            <td th:text="${report.user.name}"></td>
+            <td th:text="${report.status}"></td>
+            <td th:text="${report.type}"></td>
+            <td>
+                <!-- View Button -->
+                <a th:href="@{'/reports/' + ${report.id}}" class="btn btn-info btn-sm" role="button">
+                    <i class="fas fa-eye"></i> View
+                </a>
+
+                <!-- Delete Button -->
+                <a th:href="@{'/reports/delete/' + ${report.id}}" class="btn btn-danger btn-sm" role="button">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UJjHl5+R1X6L4peV/53iD2OiMTiFkV8Ro/1p2h1nUZfGFGgBy8jW9XlFY3I7Mj8"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<!-- Add Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
