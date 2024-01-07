@@ -14,6 +14,5 @@ COPY target/projSpringApp-0.0.1-SNAPSHOT.jar /app/app.jar
 EXPOSE 8081
 
 # Specify the command to run on container startup
-CMD ["java", "-jar", "app.jar", "--server.port=8081"]
 
 CMD ["./wait-for-it.sh", "mysql:3306", "--", "java", "-jar", "app.jar", "--server.port=8081"]
